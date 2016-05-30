@@ -13,6 +13,7 @@ import org.codeanywhere.easyRestful.base.RequestContext;
 import org.codeanywhere.easyRestful.base.annotation.Request;
 import org.codeanywhere.easyRestful.base.annotation.SpringBean;
 
+import com.openread.pojo.Articles;
 import com.openread.pojo.InMessage;
 import com.openread.pojo.OutMessage;
 import com.openread.service.DailyRecommendService;
@@ -84,11 +85,11 @@ public class Qq extends BaseAction {
                 }
 
                 //把发送发送对象转换为xml输出
-                //                xs = XStreamFactory.init(false);
-                //                xs.alias("xml", OutMessage.class);
-                //                xs.alias("item", Articles.class);
-                //                xs.toXML(oms, response.getWriter());
-                //                xs.toXML(oms, System.out);
+                xs = XStreamFactory.init(false);
+                xs.alias("xml", OutMessage.class);
+                xs.alias("item", Articles.class);
+                xs.toXML(oms, response.getWriter());
+                xs.toXML(oms, System.out);
             }
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
