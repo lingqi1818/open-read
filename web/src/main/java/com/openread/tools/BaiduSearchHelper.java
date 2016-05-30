@@ -26,7 +26,7 @@ public class BaiduSearchHelper {
                 resList.add(res);
 
             }
-            res = parseUrl(getUrlFromBaidu(title, GoogleSearchHelper.BAIDU_PAN), true);
+            res = parseUrl(getUrlFromBaidu(title, GoogleSearchHelper.BAIDU_PAN), true, true);
             if (res != null && !"error".equals(res)) {
                 resList.add(res);
             }
@@ -47,7 +47,7 @@ public class BaiduSearchHelper {
         if (elements != null && elements.size() > 0) {
             for (Element e : elements) {
                 String bUrl = e.select("a").get(0).attr("abs:href");
-                String url = parseUrl(bUrl, false);
+                String url = parseUrl(bUrl, false, true);
                 if (validateUrl(url, site)) {
                     isFind = true;
                     return url;
@@ -65,11 +65,18 @@ public class BaiduSearchHelper {
         return GoogleSearchHelper.validateUrl(url, site);
     }
 
-    public static String parseUrl(String url, boolean followRedirect) {
+    public static String parseUrl(String url, boolean followRedirect, boolean isProxy) {
         System.out.println("parseurl:" + url);
         try {
             if (GoogleSearchHelper.ERROR_URL.equals(url)) {
                 return url;
+            }
+
+            if (isProxy) {
+                String js = HttpUtil.sendGet(url, "utf-8", true, "www.baidu.com");
+                String res = js.split("URL='")[1].split("'")[0];
+                System.out.println("js parse:" + res);
+                return res;
             }
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
             for (Header head : HttpUtil.makeGenHeaders("www.baidu.com")) {

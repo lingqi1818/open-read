@@ -32,7 +32,7 @@ public class GoogleSearchHelper {
                 resList.add(res);
 
             }
-            res = BaiduSearchHelper.parseUrl(getUrlFromGoogle(title, BAIDU_PAN), true);
+            res = BaiduSearchHelper.parseUrl(getUrlFromGoogle(title, BAIDU_PAN), true, true);
             if (res != null) {
                 resList.add(res);
             }
