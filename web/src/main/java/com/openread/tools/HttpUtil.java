@@ -173,7 +173,9 @@ public class HttpUtil {
                 hclient = hHelper.getClient();
             }
             response = hclient.execute(request);
-            return EntityUtils.toString(response.getEntity(), charset).trim();
+            String result = EntityUtils.toString(response.getEntity(), charset).trim();
+            System.out.println(result);
+            return result;
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
