@@ -18,13 +18,13 @@ public class Bookdetail extends BaseAction {
         try {
             title = URLDecoder.decode(title, "UTF-8");
             if (CacheHelper.getCacheHelper().getBooks(day) == null) {
-                CacheHelper.getCacheHelper()
-                        .putBooks(day, dailyRecommendService.getCurrentDayBooks(day));
+                CacheHelper.getCacheHelper().putBooks(day,
+                        dailyRecommendService.getCurrentDayBooks(day));
             }
             List<Book> books = CacheHelper.getCacheHelper().getBooks(day);
             if (books != null) {
                 for (Book book : books) {
-                    if (title.equals(book.getTitle())) {
+                    if (title.equals(URLDecoder.decode(book.getTitle(), "UTF-8"))) {
                         getRequestContext().put("book", book);
                         break;
                     }

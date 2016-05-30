@@ -5,6 +5,7 @@ import org.codeanywhere.easyRestful.base.annotation.SpringBean;
 
 import com.openread.service.DailyRecommendService;
 import com.openread.tools.CacheHelper;
+import com.openread.tools.UrlEncodeTool;
 
 public class Booklist extends BaseAction {
     @SpringBean
@@ -14,11 +15,12 @@ public class Booklist extends BaseAction {
         //String day = getRequestContext().getHttpServletRequest().getParameter("day");
         try {
             if (CacheHelper.getCacheHelper().getBooks(day) == null) {
-                CacheHelper.getCacheHelper()
-                        .putBooks(day, dailyRecommendService.getCurrentDayBooks(day));
+                CacheHelper.getCacheHelper().putBooks(day,
+                        dailyRecommendService.getCurrentDayBooks(day));
             }
             getRequestContext().put("books", CacheHelper.getCacheHelper().getBooks(day));
             getRequestContext().put("day", day);
+            getRequestContext().put("encode", new UrlEncodeTool());
             if (!getRequestContext().getHttpServletRequest().getRequestURI().endsWith("/")) {
                 getRequestContext().put("baseUrl", "../../");
             } else {
