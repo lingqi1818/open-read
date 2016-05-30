@@ -24,7 +24,6 @@ public class MessageProcessingHandlerImpl implements MessageProcessingHandler {
         OutMessage oms = new OutMessage();
         if (MessageProcessingHandler.MSG_TYPE_TEXT.equalsIgnoreCase(msg.getMsgType())) {
             try {
-
                 String day = DailyDownloadService.sdf.format(new Date());
                 if (CacheHelper.getCacheHelper().getBooks(day) == null) {
                     CacheHelper.getCacheHelper().putBooks(day,
@@ -71,7 +70,7 @@ public class MessageProcessingHandlerImpl implements MessageProcessingHandler {
     }
 
     public OutMessage eventTypeMsg(InMessage msg) {
-        // TODO Auto-generated method stub
+        System.out.println("aaaaaa");
         return null;
     }
 
