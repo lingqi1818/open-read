@@ -38,10 +38,10 @@ public class BaiduSearchHelper {
     }
 
     public String getUrlFromBaidu(String title, String site) throws Exception {
-        Document doc = Jsoup
-                .connect("http://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd="
-                        + URLEncoder.encode(title + " pdf " + site, "UTF-8"))
-                .timeout(0).get();
+        Document doc = Jsoup.parse(HttpUtil.sendGet(
+                "http://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd="
+                        + URLEncoder.encode(title + " pdf " + site, "UTF-8"),
+                "UTF-8", true, "www.baidu.com"));
         Elements elements = doc.getElementById("content_left").select(".c-container");
         boolean isFind = false;
         if (elements != null && elements.size() > 0) {
