@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="42dp"
+    android:background="@drawable/top_bg"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:layout_gravity="center_vertical">
+
+    <Button
+        android:id="@+id/top_menu_btn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/top_menu"
+         />
+     <TextView
+        android:id="@+id/title_textview"
+        style="@style/TextView.BarTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="订阅中心" />
+     
+     <Button
+     android:id="@+id/top_add_btn"
+     android:layout_width="32dp"
+     android:layout_height="32dp"
+     android:layout_centerVertical="true"
+     android:layout_alignParentRight="true"
+     android:background="@drawable/grid">
+     </Button>
+
+</RelativeLayout>

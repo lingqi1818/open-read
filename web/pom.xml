@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+ <parent>
+ <groupId>open-read.all</groupId>
+ <version>0.1</version>
+ <artifactId>open-read-all</artifactId>
+ <relativePath>../pom.xml</relativePath>
+</parent>
+  <groupId>open-read.web</groupId>
+  <artifactId>open-read-web</artifactId>
+  <packaging>war</packaging>
+  <version>0.1</version>
+  <name>open-read-web</name>
+<dependencies>
+<dependency>
+      <groupId>easy-restful</groupId>
+  	  <artifactId>easy-restful</artifactId>
+      <version>${pom.version}</version>
+</dependency>
+<dependency>
+	<groupId>org.mongodb</groupId>
+	<artifactId>mongo-java-driver</artifactId>
+</dependency>
+<dependency>
+    <groupId>xstream</groupId>
+    <artifactId>xstream</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.jsoup</groupId>
+    <artifactId>jsoup</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.apache.velocity</groupId>
+  <artifactId>velocity</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.eclipse.jetty</groupId>
+	<artifactId>jetty-server</artifactId>
+	</dependency>
+<dependency>
+  <groupId>org.eclipse.jetty</groupId>
+  <artifactId>jetty-servlet</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.slf4j</groupId>
+  <artifactId>slf4j-log4j12</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.slf4j</groupId>
+  <artifactId>slf4j-api</artifactId>
+</dependency>
+<dependency>
+  <groupId>log4j</groupId>
+  <artifactId>log4j</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+</dependency>
+	</dependencies>
+  <build>
+	<resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.xml</include>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+    </resources>
+	<finalName>web</finalName>
+	<plugins> 
+      <plugin> 
+        <artifactId>maven-compiler-plugin </artifactId> 
+        <configuration> 
+          <source>1.6</source> 
+          <target>1.6</target> 
+        </configuration> 
+      </plugin> 
+    </plugins> 
+  </build>
+   <properties>  
+       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+   </properties>
+</project>
