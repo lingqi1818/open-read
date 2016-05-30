@@ -14,9 +14,9 @@ public class Bookdetail extends BaseAction {
     @SpringBean
     private DailyRecommendService dailyRecommendService;
 
-    public void get(String day, String title) {
+    public void get(String day, String uuid) {
         try {
-            title = URLDecoder.decode(title, "UTF-8");
+            uuid = URLDecoder.decode(uuid, "UTF-8");
             if (CacheHelper.getCacheHelper().getBooks(day) == null) {
                 CacheHelper.getCacheHelper().putBooks(day,
                         dailyRecommendService.getCurrentDayBooks(day));
@@ -24,7 +24,7 @@ public class Bookdetail extends BaseAction {
             List<Book> books = CacheHelper.getCacheHelper().getBooks(day);
             if (books != null) {
                 for (Book book : books) {
-                    if (title.equals(URLDecoder.decode(book.getTitle(), "UTF-8"))) {
+                    if (uuid.equals(book.getUuid())) {
                         getRequestContext().put("book", book);
                         break;
                     }

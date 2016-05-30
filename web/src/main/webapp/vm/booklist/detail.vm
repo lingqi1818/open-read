@@ -28,14 +28,14 @@
 		<div class="content">
 		#foreach($book in $books)
 		<p><div>
-		<div class="book"><a href="${baseUrl}bookdetail/get/attr/${day}/$encode.encode(${book.title})"><img src="$book.mpic" /></a></div>
+		<div class="book"><a href="${baseUrl}bookdetail/get/attr/${day}/${book.uuid}"><img src="$book.mpic" /></a></div>
 		<div class="book">
 		<p>
 		<font color="yellow">书名：</font>$book.title<br/>
 		<font color="yellow">类目：</font>$book.kw<br/></a>
 		<font color="yellow">作者：</font>$book.author<br/></a>
 		<font color="yellow">简介：</font>$book.sIntro<br/>
-		<font color="yellow">详情：</font><a href="${baseUrl}bookdetail/get/attr/${day}/${book.title}">点击进入</a>
+		<font color="yellow">详情：</font><a href="${baseUrl}bookdetail/get/attr/${day}/${book.uuid}">点击进入</a>
 		</p>
 		</div>
 		<div class="clear"/>

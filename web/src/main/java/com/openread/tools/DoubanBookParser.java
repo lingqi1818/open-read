@@ -13,6 +13,7 @@ import org.jsoup.select.Elements;
 public class DoubanBookParser {
 
     public static class Book {
+        private String       uuid;
         private String       lpic;
         private String       mpic;
         private String       title;
@@ -152,6 +153,14 @@ public class DoubanBookParser {
 
         public void setCommentUsers(Set<String> commentUsers) {
             this.commentUsers = commentUsers;
+        }
+
+        public String getUuid() {
+            return uuid;
+        }
+
+        public void setUuid(String uuid) {
+            this.uuid = uuid;
         }
 
     }

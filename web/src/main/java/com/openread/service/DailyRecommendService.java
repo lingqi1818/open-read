@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.codeanywhere.easyRestful.base.session.util.UUID;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -56,8 +57,8 @@ public class DailyRecommendService {
              * URLEncoder.encode(downloadUrl, charset) + "\r\n");
              * writer.write("kw:" + URLEncoder.encode(kw, charset) + "\r\n");
              */
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(
-                    book)));
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(new FileInputStream(book)));
             String line;
             String author = null;
             String kw = null;
@@ -67,8 +68,8 @@ public class DailyRecommendService {
                 String strs[] = line.split(":");
                 if ("doubanUrl".equalsIgnoreCase(strs[0])) {
                     //String[] kv = parseURL();
-                    bookObj = dbookparser.parse(URLDecoder.decode(
-                            line.substring(strs[0].length() + 1), charset));
+                    bookObj = dbookparser.parse(
+                            URLDecoder.decode(line.substring(strs[0].length() + 1), charset));
                     //                    bookObj.setDoubanUrl(URLDecoder.decode(line.substring(strs[0].length() + 1),
                     //                            charset));
 
@@ -108,6 +109,7 @@ public class DailyRecommendService {
                 bookObj.setKw(kw);
                 bookObj.setAuthor(author);
                 bookObj.setsIntro(sintro);
+                bookObj.setUuid(new UUID().nextID());
                 books.add(bookObj);
             }
             reader.close();
