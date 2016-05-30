@@ -85,11 +85,11 @@ public class Qq extends BaseAction {
                 }
 
                 //把发送发送对象转换为xml输出
-                xs = XStreamFactory.init(false);
-                xs.alias("xml", OutMessage.class);
-                xs.alias("item", Articles.class);
-                xs.toXML(oms, response.getWriter());
-                xs.toXML(oms, System.out);
+//                xs = XStreamFactory.init(false);
+//                xs.alias("xml", OutMessage.class);
+//                xs.alias("item", Articles.class);
+//                xs.toXML(oms, response.getWriter());
+//                xs.toXML(oms, System.out);
             }
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
