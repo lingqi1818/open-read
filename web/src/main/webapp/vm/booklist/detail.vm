@@ -28,7 +28,7 @@
 		<div class="content">
 		#foreach($book in $books)
 		<p><div>
-		<div class="book"><a href="${baseUrl}bookdetail/get/attr/${day}/${book.title}"><img src="$book.mpic" /></a></div>
+		<div class="book"><a href="${baseUrl}bookdetail/get/attr/${day}/$encode.encode(${book.title})"><img src="$book.mpic" /></a></div>
 		<div class="book">
 		<p>
 		<font color="yellow">书名：</font>$book.title<br/>
