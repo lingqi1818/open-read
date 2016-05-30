@@ -52,7 +52,8 @@ public class GoogleSearchHelper {
     public String getUrlFromGoogle(String title, String site) throws Exception {
         String sb = HttpUtil.sendGet(
                 "http://www.google.com/search?q="
-                        + URLEncoder.encode(title + " pdf " + site, "UTF-8"), "gb2312", false,"www.gooogle.com");
+                        + URLEncoder.encode(title + " pdf " + site, "UTF-8"),
+                "gb2312", false, "www.gooogle.com");
         Document doc = Jsoup.parse(sb);
         Elements elements = doc.getElementById("ires").select("ol").select("li");
         String res = null;
@@ -77,6 +78,9 @@ public class GoogleSearchHelper {
     }
 
     public static boolean validateUrl(String url, String site) {
+        if (url == null) {
+            return false;
+        }
         if ((url.contains("dl.dbank.com") || url.contains("vmall.com")) && DBANK.equals(site)) {
             return true;
         }
