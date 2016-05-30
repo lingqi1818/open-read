@@ -18,16 +18,16 @@ public class BaiduSearchHelper {
         List<String> resList = new ArrayList<String>();
         try {
             String res = getUrlFromBaidu(title, GoogleSearchHelper.DBANK);
-            if (res != null) {
+            if (res != null && !"error".equals(res)) {
                 resList.add(res);
             }
             res = getUrlFromBaidu(title, GoogleSearchHelper.VDISK);
-            if (res != null) {
+            if (res != null && !"error".equals(res)) {
                 resList.add(res);
 
             }
             res = parseUrl(getUrlFromBaidu(title, GoogleSearchHelper.BAIDU_PAN), true);
-            if (res != null) {
+            if (res != null && !"error".equals(res)) {
                 resList.add(res);
             }
 

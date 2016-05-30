@@ -125,6 +125,9 @@ public class DailyDownloadService {
         BufferedWriter writer = new BufferedWriter(
                 new OutputStreamWriter(new FileOutputStream(countFile)));
         count = count + 2;
+        if (count == 100) {
+            count = 0;
+        }
         writer.write(count + "\r\n");
         writer.close();
     }

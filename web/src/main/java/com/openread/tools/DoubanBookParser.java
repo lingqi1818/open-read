@@ -214,10 +214,10 @@ public class DoubanBookParser {
 
     public static void main(String args[]) {
         Book book = new DoubanBookParser().parse("https://book.douban.com/subject/3558788/");
-        //        System.out.println(book.getAvgVoteStar());
-        //        System.out.println(book.getTitle());
-        //        System.out.println(book.getVote());
-        //        System.out.println(book.getComments());
+        System.out.println(book.getAvgVoteStar());
+        System.out.println(book.getTitle());
+        System.out.println(book.getVote());
+        System.out.println(book.getComments());
         System.out.println(book.getIntro());
     }
 }
