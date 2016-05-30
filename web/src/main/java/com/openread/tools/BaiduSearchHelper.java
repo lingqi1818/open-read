@@ -85,7 +85,7 @@ public class BaiduSearchHelper {
     }
 
     public static void main(String args[]) throws Exception {
-        System.out.println(new BaiduSearchHelper().getUrlFromBaidu("浪潮之巅"));
+        System.out.println(new BaiduSearchHelper().getUrlFromBaidu("从0到1"));
 
     }
 }
