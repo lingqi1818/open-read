@@ -41,7 +41,7 @@ public class MessageProcessingHandlerImpl implements MessageProcessingHandler {
                         a.setDescription(book.getIntro());
                         a.setPicUrl(book.getLpic());
                         a.setUrl("http://www.dumpcache.com/bookdetail/get/attr/" + day + "/"
-                                + book.getTitle());
+                                + book.getUuid());
                         list.add(a);
                     }
                     oms.setArticles(list);
