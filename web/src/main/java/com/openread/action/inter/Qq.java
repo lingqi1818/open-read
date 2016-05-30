@@ -89,7 +89,7 @@ public class Qq extends BaseAction {
                 xs.alias("xml", OutMessage.class);
                 xs.alias("item", Articles.class);
                 xs.toXML(oms, response.getWriter());
-                xs.toXML(oms, System.out);
+                //xs.toXML(oms, System.out);
             }
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
