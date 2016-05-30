@@ -75,7 +75,7 @@ public class BaiduSearchHelper {
             if (isProxy) {
                 String js = HttpUtil.sendGet(url, "utf-8", true, "www.baidu.com");
                 String res = js.split("URL='")[1].split("'")[0];
-                System.out.println("js parse:" + res);
+                //System.out.println("js parse:" + res);
                 return res;
             }
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
@@ -85,7 +85,7 @@ public class BaiduSearchHelper {
             conn.setInstanceFollowRedirects(followRedirect);
             conn.getInputStream();
             String res = conn.getHeaderField("Location");
-            System.out.println("parse result:" + res);
+            //System.out.println("parse result:" + res);
             return res;
         } catch (Exception ex) {
             ex.printStackTrace();
