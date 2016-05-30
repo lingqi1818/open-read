@@ -174,7 +174,6 @@ public class HttpUtil {
             }
             response = hclient.execute(request);
             String result = EntityUtils.toString(response.getEntity(), charset).trim();
-            System.out.println(result);
             return result;
         } catch (Exception ex) {
             ex.printStackTrace();

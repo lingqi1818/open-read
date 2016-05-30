@@ -66,7 +66,7 @@ public class BaiduSearchHelper {
     }
 
     public static String parseUrl(String url, boolean followRedirect) {
-        //System.out.println("parseurl:" + url);
+        System.out.println("parseurl:" + url);
         try {
             if (GoogleSearchHelper.ERROR_URL.equals(url)) {
                 return url;
@@ -77,7 +77,9 @@ public class BaiduSearchHelper {
             }
             conn.setInstanceFollowRedirects(followRedirect);
             conn.getInputStream();
-            return conn.getHeaderField("Location");
+            String res = conn.getHeaderField("Location");
+            System.out.println("parse result:" + res);
+            return res;
         } catch (Exception ex) {
             ex.printStackTrace();
             return GoogleSearchHelper.ERROR_URL;
