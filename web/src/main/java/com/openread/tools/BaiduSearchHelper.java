@@ -66,7 +66,7 @@ public class BaiduSearchHelper {
     }
 
     public static String parseUrl(String url, boolean followRedirect, boolean isProxy) {
-        System.out.println("parseurl:" + url);
+        //System.out.println("parseurl:" + url);
         try {
             if (GoogleSearchHelper.ERROR_URL.equals(url)) {
                 return url;
