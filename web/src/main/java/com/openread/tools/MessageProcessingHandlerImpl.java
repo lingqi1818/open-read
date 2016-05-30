@@ -22,35 +22,35 @@ public class MessageProcessingHandlerImpl implements MessageProcessingHandler {
 
     public OutMessage textTypeMsg(InMessage msg) {
         OutMessage oms = new OutMessage();
-        //if (MessageProcessingHandler.MSG_TYPE_TEXT.equalsIgnoreCase(msg.getMsgType())) {
-        try {
-            String day = DailyDownloadService.sdf.format(new Date());
-            if (CacheHelper.getCacheHelper().getBooks(day) == null) {
-                CacheHelper.getCacheHelper().putBooks(day,
-                        dailyRecommendService.getCurrentDayBooks(day));
-            }
-            List<Book> books = CacheHelper.getCacheHelper().getBooks(day);
-            if (books != null && books.size() > 0) {
-                List<Articles> list = new ArrayList<Articles>();
-                oms.setMsgType(MSG_TYPE_NEWS);
-                oms.setArticleCount(books.size());
-                for (Book book : books) {
-                    Articles a = new Articles();
-                    a.setTitle(book.getTitle());
-                    a.setDescription(book.getIntro());
-                    a.setPicUrl(book.getLpic());
-                    a.setUrl("http://www.dumpcache.com/bookdetail/get/attr/" + day + "/"
-                            + book.getUuid());
-                    list.add(a);
+        if (MessageProcessingHandler.MSG_TYPE_TEXT.equalsIgnoreCase(msg.getMsgType())) {
+            try {
+                String day = DailyDownloadService.sdf.format(new Date());
+                if (CacheHelper.getCacheHelper().getBooks(day) == null) {
+                    CacheHelper.getCacheHelper().putBooks(day,
+                            dailyRecommendService.getCurrentDayBooks(day));
                 }
-                oms.setArticles(list);
-            } else {
+                List<Book> books = CacheHelper.getCacheHelper().getBooks(day);
+                if (books != null && books.size() > 0) {
+                    List<Articles> list = new ArrayList<Articles>();
+                    oms.setMsgType(MSG_TYPE_NEWS);
+                    oms.setArticleCount(books.size());
+                    for (Book book : books) {
+                        Articles a = new Articles();
+                        a.setTitle(book.getTitle());
+                        a.setDescription(book.getIntro());
+                        a.setPicUrl(book.getLpic());
+                        a.setUrl("http://www.dumpcache.com/bookdetail/get/attr/" + day + "/"
+                                + book.getUuid());
+                        list.add(a);
+                    }
+                    oms.setArticles(list);
+                } else {
+                    oms.setContent("今日暂无推荐");
+                }
+            } catch (Exception e) {
                 oms.setContent("今日暂无推荐");
             }
-        } catch (Exception e) {
-            oms.setContent("今日暂无推荐");
         }
-        //}
         return oms;
     }
 
@@ -70,8 +70,9 @@ public class MessageProcessingHandlerImpl implements MessageProcessingHandler {
     }
 
     public OutMessage eventTypeMsg(InMessage msg) {
-        // TODO Auto-generated method stub
-        return null;
+        OutMessage oms = new OutMessage();
+        oms.setContent("客官，欢迎您，我将会竭诚为您服务，请输入任意字符获取最新图书信息！");
+        return oms;
     }
 
     public static void main(String args[]) {
